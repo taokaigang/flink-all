@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/flink-all.iml" filepath="$PROJECT_DIR$/.idea/flink-all.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flink-common/flink-common.iml" filepath="$PROJECT_DIR$/flink-common/flink-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flink-sql/flink-sql.iml" filepath="$PROJECT_DIR$/flink-sql/flink-sql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flink-stream/flink-stream.iml" filepath="$PROJECT_DIR$/flink-stream/flink-stream.iml" />
+    </modules>
+  </component>
+</project>

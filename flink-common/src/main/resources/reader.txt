@@ -1,0 +1,37 @@
+{
+    "type": "job",
+    "version": "1.0",
+    "configuration": {
+        "reader": {
+            "plugin": "mysql",
+            "parameter": {
+                "connection": [
+                    {
+                        "table": [ //分库分表的Table列表1
+                            "tbl1",
+                            "tbl2",
+                            "tbl3"
+                        ],
+                        "datasource": "datasourceName1" //分库分表的数据源1
+                    },
+                    {
+                        "table": [ //分库分表的Table列表2
+                            "tbl4",
+                            "tbl5",
+                            "tbl6"
+                        ],
+                        "datasource": "datasourceName2" //分库分表的数据源2
+                    }
+                ],
+                "singleOrMulti": "multi",
+                "splitPk": "db_id",
+                "column": [
+                    "id", "name", "age"
+                ],
+                "where": "1 < id and id < 100"
+            }
+        },
+        "writer": {
+        }
+    }
+}
