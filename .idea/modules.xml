@@ -3,9 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/flink-all.iml" filepath="$PROJECT_DIR$/.idea/flink-all.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flink-cdc/flink-cdc.iml" filepath="$PROJECT_DIR$/flink-cdc/flink-cdc.iml" />
       <module fileurl="file://$PROJECT_DIR$/flink-common/flink-common.iml" filepath="$PROJECT_DIR$/flink-common/flink-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flink-e-commerce-system/flink-e-commerce-system.iml" filepath="$PROJECT_DIR$/flink-e-commerce-system/flink-e-commerce-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flink-hbase/flink-hbase.iml" filepath="$PROJECT_DIR$/flink-hbase/flink-hbase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flink-kafka/flink-kafka.iml" filepath="$PROJECT_DIR$/flink-kafka/flink-kafka.iml" />
       <module fileurl="file://$PROJECT_DIR$/flink-sql/flink-sql.iml" filepath="$PROJECT_DIR$/flink-sql/flink-sql.iml" />
       <module fileurl="file://$PROJECT_DIR$/flink-stream/flink-stream.iml" filepath="$PROJECT_DIR$/flink-stream/flink-stream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-demo/java-demo.iml" filepath="$PROJECT_DIR$/java-demo/java-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdbc/jdbc.iml" filepath="$PROJECT_DIR$/jdbc/jdbc.iml" />
     </modules>
   </component>
 </project>

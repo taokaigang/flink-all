@@ -1,0 +1,72 @@
+一、JDBC的工作原理
+0. 注册驱动
+    Class.forName("驱动类的全名")
+1. 获取连接对象Connection
+    Connection conn = DriverManager.getConnection(String url,String user,String passwd);
+2. 获取能发送sql语句的执行对象Statement,
+    Statement stat = conn.createStatement();
+3. 发送sql语句,获取结果集
+   ResultSet rs =stat.executeQuery("select * from emp")
+4. 处理结果集：
+    将rs里存储的二位表结构，一行一行的取出，针对于每一行进行取出相应的列的值，可以打印，或者是再次封装。
+5. 关闭连接
+    rs.close();
+    stat.close();
+    conn.close();
+二、JDBC的入门编程
+1. 创建一个java项目：nz202_jdbc
+2. 导入静态资源：比如视频、音频、图片、第三方jar包等，如果是jar包，需要将jar包加载到classpath下
+   比如：导入mysql的驱动包操作步骤如下
+
+   创建lib目录，放入mysql的驱动包,右键点击jar文件，选择Add as library
+3. 创建测试类（com.qf.jdbc.FirstDemo01）
+4. 加载驱动
+5. 获取连接对象Connection
+6. 获取执行对象Statement
+7. 发送sql
+8. 获取结果集（只有执行select语句时，才会有这一步）
+9. 关闭连接
+
+三、
+连接数据库的url
+    jdbc:mysql://localhost:3306/nz202
+
+    -jdbc:   这是jdbc这套接口的规范协议
+    -mysql:  表明jdbc要连接mysql数据库
+    -localhost:   数据库服务端所在的主机的IP地址    纯数字的ip：127.0.0.1用来表示本地，localhost也用来表示本地
+                                                  也可以使用路由器分配的真实IP
+    -3306：这个是mysql数据库的默认端口号
+    -nz202: mysql数据库里的一个库名
+
+扩展：如果想链接oracle数据库
+    jdbc:oracle:thin:@ip:port:pid
+    举例说明：jdbc:oracle:thin:@localhost:1521:orcl
+
+四、Junit测试工具类
+    此工具类的用途是进行测试，比较方便。
+    它使用了注解的方式，在一个非静态方法上写注解@Test,就可以运行这个方法。
+    另外两个常用的注解
+    @Before:  位置也是在方法上使用,特点是对应的方法在@Test注解下的方法执行前执行。
+    @After：  位置也是在方法上使用,特点是对应的方法在@Test注解下的方法执行后执行。
+
+    注意：需要引用两个jar包   junit-4.12.jar  和 hamcrest-core-1.3.jar
+
+
+五、jdbc里的sql语句注意事项
+    -1 不能在双引号里添加分号
+    String sql = "select * from emp;";
+    上述写法是错误的，因为在sql语句后有一个分号
+
+
+    -2 sql语句中的字符串 一定要使用单引号。
+    String sql = "insert into testbatch values (1,'zhangsan','f')"
+
+    如果字符串的值是一个java中的变量。那么就需要字符串拼接。
+    String name = "zhangsan";
+    String gender = "f";
+
+     "insert into testbatch values (100011,'"
+     +name
+     +"','"
+     +gender+
+     "')"

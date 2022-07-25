@@ -1,0 +1,148 @@
+复习：
+一、数据库的概念
+    - DB    ：使用某种特定的数据结构来存储数据的仓库（在磁盘上都是某种特定结构的文件而已）
+    - DBMS  ：就是一款管理DB的软件工具。用结构化查询语言来对DB进行管理和维护工作
+    - 表模型 : 有行和列的二维结构。row也叫record， column也叫fields
+二、SQL语言
+   - 1. DDL，数据定义语言，用于创建，删除和修改数据库对象的结构的。 数据库对象指的就是database,table,view,index,function等
+             create、drop、alter
+   - 2. DML，数据操纵语言，用于对表里的数据（记录）进行更新操作（增删改）
+             insert 、delete、update
+   - 3. DQL，data query language. 用于查询表里的记录的。
+             select, 有选择的含义，表示要选择表中的哪些字段进行返回。
+   - 4. DCL，数据控制语言，用于操作用户和权限的
+             create user, drop user,grant ,revoke
+   - 5. TCL，事务控制语言，用于维护数据的完整性和安全性
+             commit,rollback,savepoint.
+三、SQL之DDL语言
+四、SQL之DML语言
+五、SQL之DQL语言
+    - 基本的查询语句结构和执行顺序
+            - 基本结构：select [distinct]...from...[where...][group by...][having...][order by...][limit...]
+            - 执行顺序：
+                1.from...
+                2.where...
+                3.group by...
+                4.having ...
+                5.select ...
+                6.order by ...
+                7.limit ...
+
+    - 别名的用法
+            - 可以在from子句中，给表起别名
+            - 可以在select子句中，给字段起别名
+            - 注意执行顺序， 应该先命名，再使用         <----这是标准sql的规范。
+
+    - where子句
+            - 关系表达式：   >,>=,<,<=,!=,<>,=
+            - 条件连接符：   and,or,between...and
+            - 集合操作：     >all(element....),>any(element....)
+            - 模糊查询：     like       _:占位符   %：通配符
+            - exists：  用于判断主表是否存在和子查询满足关联条件的数据。如果有，就返回。
+    - group by子句
+            - 多行返回一行的特点，用于统计操作。
+            - 分组字段和聚合函数可以放到select子句中
+            - 聚合函数，有忽略null值的特点，需要注意
+            - count(*)不会忽略null值。
+    - having子句
+            - 分组之后再次过滤时，使用。
+    - distinct关键字
+    - order by 子句
+    - limit关键字
+            - limit [m,]n
+            - 表示 从下标为m的那一条记录开始查询，查询n条记录。
+    - if和case when语句
+          case [fieldName] when [value|condition] then val
+                           when....   then...
+                           else ... end
+
+
+六、关联查询（多表查询）
+    - 概念：   所需要的数据不在一张表中，而在多个表中，涉及到多张表的查询，就是多表查询，如果使用join连接，就叫连接查询
+    - 笛卡尔积： m*n
+    - join连接和分类
+        -  内连接  ：返回所有满足关联条件的数据    [inner] join
+        -  外连接  ： 返回满足关联条件的数据以及驱动表中其他的数据
+            - 左外连接   left  join         左表是驱动表
+            - 右外连接   right join         右表是驱动表
+            - 全外连接（mysql不支持）
+七、子查询
+    - 概念：因为一个普通的查询A所需要的条件数据不能直观体现，而是另外一个查询语句B查询的结果。此时B就是子查询语句，A是父查询语句
+    - 位置：
+        - from子句中，子查询相当于一张表
+        - where子句中，条件所需要的数据
+        - having子句中，条件所需要的数据
+        - select子句中，相当于join连接的特殊写法。
+八、常用函数
+九、数据库的备份
+十、SQl之DCL语言
+
+JDBC的复习
+一、JDBC的概念
+    sun公司为java语言连接其他数据库所提供了一套编程接口（规范），具体实现无需开发人员设计，而是各个数据库厂商
+    自己去实现这套接口。而开发人员只需要拿到这套程序（驱动程序）和直接使用JDBC接口（面向对象的多态）就可以了。
+二、JDBC的原理（流程）
+    - 工作原理
+        1. 注册驱动
+        2. 建立连接
+        3. 获取发送sql的对象，发送sql
+        4. 处理结果集
+        5. 关闭连接
+    - 核心组件
+        1. DriverManager:是一个class。提供了getConnection(.....)来与数据库建立连接
+        2. Connection：是一个interface,主要负责与数据库的真正交互，提供了createStatement()方法
+        3. Statement：是一个interface,主要作用就是用来发送sql到DBMS中
+                - executeUpdate(String sql):主要用来发送DML语句
+                - executeQuery(String sql):主要用来发送DQL语句
+                - execute(String sql):主要用来发送DDL语句
+        4. ResultSet：是一个interface,主要作用是用来封装select语句的返回数据。可以理解为封装了一个二维表结构
+                - boolean next(), 判断是否有下一行记录，如果有返回true,游标向下移动。然后就可以对指向的那一条
+                                   记录进行处理。
+                - XXX  getXXX(int columnIndex):通过返回的记录中的字段的下标来获取字段的值。
+                  XXX  getXXX(String columnName)：通过返回的记录中的字段的名称来获取字段的值。
+
+        5. 数据类型的映射关系
+                java类型      mysql数据库类型
+                int                int
+                long               bigint
+                String             char/varchar/
+                java.sql.Date      Date
+                java.sql.timestamp  timestamp
+三、JDBC的入门案例
+        - 删除数据
+        - 查询数据
+四、JDBC的批处理
+        - Statement提供了批处理方法
+        分别是
+        addBatch(String sql):向缓存中添加待执行的sql
+        executeBatch():将缓存中的sql批量flush
+
+        注意：String sql = "select * from emp";  字符串里的sql后可以添加分号，不会报错了。不加分号也没关系。
+五、SQL注入问题
+
+    select * from bank_account where account_id = '6225113088436225' and user_pwd ='111111 ' or '1' = '1'
+
+    Statement发送的sql语句可以被别人通过参数来修改sql语句的条件的个数，
+    进行登录网址或者是相关服务器。容易造成数据安全隐患问题。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

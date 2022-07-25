@@ -2,20 +2,33 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="flink-stream" />
         <module name="flink-sql" />
+        <module name="flink-cdc" />
+        <module name="flink-hbase" />
         <module name="flink-common" />
+        <module name="flink-e-commerce-system" />
+        <module name="flink-stream" />
+        <module name="java-demo" />
+        <module name="jdbc" />
+        <module name="flink-kafka" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="flink-all" target="1.5" />
-      <module name="flink-common" target="8" />
-      <module name="flink-sql" target="1.5" />
-      <module name="flink-stream" target="1.5" />
+      <module name="flink-all" target="1.8" />
+      <module name="flink-cdc" target="8" />
+      <module name="flink-common" target="1.8" />
+      <module name="flink-e-commerce-system" target="1.8" />
+      <module name="flink-hbase" target="1.8" />
+      <module name="flink-kafka" target="1.8" />
+      <module name="flink-sql" target="1.8" />
+      <module name="flink-stream" target="1.8" />
+      <module name="java-demo" target="7" />
+      <module name="jdbc" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
